@@ -1,49 +1,53 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// PlayerController´Â ÇÃ·¹ÀÌ¾î Ä³¸¯ÅÍ·Î¼­ Player °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ Á¦¾îÇÔ
+// PlayerControllerëŠ” í”Œë ˆì´ì–´ ìºë¦­í„°ë¡œì„œ Player ê²Œì„ ì˜¤ë¸Œì íŠ¸ë¥¼ ì œì–´í•¨
 public class PlayerController : MonoBehaviour
 {
-    public AudioClip deathClip; // »ç¸Á ½Ã Àç»ıÇÒ ¿Àµğ¿À Å¬¸³
-    public float jumpForce = 700f; // Á¡ÇÁ Èû
-    private int jumpCount = 0; // ´©Àû Á¡ÇÁ È½¼ö
-    private bool isGrounded = false; // ¹Ù´Ú¿¡ ´ê¾Ò´ÂÁö ³ªÅ¸³¿
-    private bool isDead = false; //»ç¸Á »óÅÂ
+    public AudioClip deathClip; // ì‚¬ë§ ì‹œ ì¬ìƒí•  ì˜¤ë””ì˜¤ í´ë¦½
+    public float jumpForce = 700f; // ì í”„ í˜
+    private int jumpCount = 0; // ëˆ„ì  ì í”„ íšŸìˆ˜
+    private bool isGrounded = false; // ë°”ë‹¥ì— ë‹¿ì•˜ëŠ”ì§€ ë‚˜íƒ€ëƒ„
+    private bool isDead = false; //ì‚¬ë§ ìƒíƒœ
 
-    private Rigidbody2D playerRigidbody; // »ç¿ëÇÒ ¸®Áöµå¹Ùµğ ÄÄÆ÷³ÍÆ®
-    private Animator animator; // »ç¿ëÇÒ ¾Ö´Ï¸ŞÀÌÅÍ ÄÄÆ÷³ÍÆ®
-    private AudioSource playerAudio; // »ç¿ëÇÒ ¿Àµğ¿À ¼Ò½º ÄÄÆ÷³ÍÆ®
+    private Rigidbody2D playerRigidbody; // ì‚¬ìš©í•  ë¦¬ì§€ë“œë°”ë”” ì»´í¬ë„ŒíŠ¸
+    private Animator animator; // ì‚¬ìš©í•  ì• ë‹ˆë©”ì´í„° ì»´í¬ë„ŒíŠ¸
+    private AudioSource playerAudio; // ì‚¬ìš©í•  ì˜¤ë””ì˜¤ ì†ŒìŠ¤ ì»´í¬ë„ŒíŠ¸
 
     // Start is called before the first frame update
     private void Start()
     {
-        //ÃÊ±âÈ­
+        // ì´ˆê¸°í™”
+        // ê²Œì„ ì˜¤ë¸Œì íŠ¸ë¡œë¶€í„° ì‚¬ìš©í•  ì»´í¬ë„ŒíŠ¸ë“¤ì„ ê°€ì ¸ì™€ ë³€ìˆ˜ì— í• ë‹¹
+        playerRigidbody = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        playerAudio = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        // »ç¿ëÀÚ ÀÔ·ÂÀ» °¨ÁöÇÏ°í Á¡ÇÁÇÏ´Â Ã³¸®
+        // ì‚¬ìš©ì ì…ë ¥ì„ ê°ì§€í•˜ê³  ì í”„í•˜ëŠ” ì²˜ë¦¬
     }
 
     private void Die()
     {
-        // »ç¸Á Ã³¸®
+        // ì‚¬ë§ ì²˜ë¦¬
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        // Æ®¸®°Å Äİ¶óÀÌ´õ¸¦ °¡Áø Àå¾Ö¹°°úÀÇ Ãæµ¹À» °¨Áö
+        // íŠ¸ë¦¬ê±° ì½œë¼ì´ë”ë¥¼ ê°€ì§„ ì¥ì• ë¬¼ê³¼ì˜ ì¶©ëŒì„ ê°ì§€
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        // ¹Ù´Ú¿¡ ´ê¾ÒÀ½À» °¨ÁöÇÏ´Â Ã³¸®
+        // ë°”ë‹¥ì— ë‹¿ì•˜ìŒì„ ê°ì§€í•˜ëŠ” ì²˜ë¦¬
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        // ¹Ù´Ú¿¡¼­ ¹ş¾î³µÀ½À» °¨ÁöÇÏ´Â Ã³¸®
+        // ë°”ë‹¥ì—ì„œ ë²—ì–´ë‚¬ìŒì„ ê°ì§€í•˜ëŠ” ì²˜ë¦¬
     }
 }
