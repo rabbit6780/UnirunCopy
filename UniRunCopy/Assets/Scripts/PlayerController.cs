@@ -29,6 +29,36 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         // 사용자 입력을 감지하고 점프하는 처리
+
+        if (isDead)
+        {
+            //사망 시 처리를 더 이상 진행하지 않고 종료
+            return;
+        }
+
+        //마우스 왼쪽 버튼을 눌렀으며 && 최대 점프 횟수(2)에 도달하지 않았다면
+
+        if (Input.GetMouseButtonDown(0) && jumpCount < 2)
+        {
+            //점프 횟수 증가
+            jumpCount++;
+            //점프 직전에 속도를 순간적으로 제로(0,0)fh qusrud
+            playerRigidbody.velocity = Vector2.zero;
+            //리지드바디에 위쪽으로 힘 주기
+            playerRigidbody.AddForce(new Vector2(0, jumpForce));
+            //오디오 소스 재생
+            playerAudio.Play();
+        }
+
+        else if (Input.GetMouseButtonUp(0)&&playerRigidbody.velocity.y>0)
+        {
+            //마우스 왼쪽 버튼에서 손을 떼는 순간 && 속도의 y 값이 양수라면(위로 상승 중)
+            //현재 속도를 절반으로 변경
+            playerRigidbody.velocity = playerRigidbody.velocity * 0.5f;
+        }
+
+        //애니메이터의 Grounded 파라미터를 isGrounded 값으로 갱신
+        animator.SetBool("Grrounded", isGrounded);
     }
 
     private void Die()
