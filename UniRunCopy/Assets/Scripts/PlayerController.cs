@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
         {
             //점프 횟수 증가
             jumpCount++;
-            //점프 직전에 속도를 순간적으로 제로(0,0)fh qusrud
+            //점프 직전에 속도를 순간적으로 제로(0,0)로 변경
             playerRigidbody.velocity = Vector2.zero;
             //리지드바디에 위쪽으로 힘 주기
             playerRigidbody.AddForce(new Vector2(0, jumpForce));
@@ -58,12 +58,23 @@ public class PlayerController : MonoBehaviour
         }
 
         //애니메이터의 Grounded 파라미터를 isGrounded 값으로 갱신
-        animator.SetBool("Grrounded", isGrounded);
+        animator.SetBool("Grounded", isGrounded);
     }
 
     private void Die()
     {
         // 사망 처리
+        // 애니메이터의 Die 트리거 파라미터를 셋
+        animator.SetTrigger("Die");
+        //오디오 소스에 할당된 오디오 클립을 deathClip으로 변경
+        playerAudio.clip = deathClip;
+        //사망 효과음 재생
+        playerAudio.Play();
+
+        //속도를 제로(0,0)로 변경
+        playerRigidbody.velocity = Vector2.zero;
+        //사망 상태를 true로 변경
+        isDead = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
