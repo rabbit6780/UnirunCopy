@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class Chapter5 : MonoBehaviour
 {
+    
     // Start is called before the first frame update
     void Start()
     {
-        int i = 10;
 
-        while(i>0)
+
+        for (int i = 0; i < 2; i++)
         {
-            Debug.Log($"i : {i--}");
+            for (int j = 0; j <= i; j++)
+            {
+                Debug.Log("*");
+            }
+            
         }
     }
 
