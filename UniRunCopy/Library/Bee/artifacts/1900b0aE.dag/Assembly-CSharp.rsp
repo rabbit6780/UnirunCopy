@@ -377,6 +377,7 @@
 "Assets/Scripts/Chapter5.cs"
 "Assets/Scripts/GameManager.cs"
 "Assets/Scripts/Platform.cs"
+"Assets/Scripts/PlatformSpawner.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/ScrollingObject.cs"
 "Assets/Simple 2D Platformer BE2/ReadMe/Scripts/ReadmeBE2.cs"
